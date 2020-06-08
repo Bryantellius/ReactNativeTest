@@ -14,15 +14,35 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import HomeScreen from './Home';
 import Profile from './Profile';
+import styles from './Styles';
 
 const Stack = createStackNavigator();
 
 export const App: React.FC<IAppProps> = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="Home" component={HomeScreen}></Stack.Screen>
-        <Stack.Screen name="Profile" component={Profile}></Stack.Screen>
+      <Stack.Navigator
+        initialRouteName="Home"
+        screenOptions={{
+          headerStyle: styles.headerStyle,
+          headerTintColor: styles.headerTintColor.color,
+          headerTitleStyle: styles.headerTitleStyle,
+        }}>
+        <Stack.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{title: 'Strider'}}></Stack.Screen>
+        <Stack.Screen
+          name="Profile"
+          component={Profile}
+          initialParams={{
+            user: 'John Doe',
+            age: 21,
+            city: 'Montgomery',
+          }}
+          options={({route}: any) => ({
+            title: route.params?.user,
+          })}></Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>
   );

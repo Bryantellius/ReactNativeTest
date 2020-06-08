@@ -8,8 +8,17 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   text: {
-    color: '#eee',
-    fontSize: 20,
+    color: '#000',
+    fontSize: 30,
+    marginVertical: 10,
+    padding: 10,
+  },
+  headerStyle: {
+    backgroundColor: '#ff7600',
+  },
+  headerTintColor: {color: '#fff'},
+  headerTitleStyle: {
+    fontWeight: 'bold',
   },
 });
 
