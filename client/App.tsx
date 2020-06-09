@@ -11,40 +11,25 @@
 import React from 'react';
 import 'react-native-gesture-handler';
 import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
-import HomeScreen from './Home';
-import Profile from './Profile';
-import Header from './components/Header';
+import {createStackNavigator, HeaderTitle} from '@react-navigation/stack';
 import styles from './Styles';
+import Feed from './screens/Feed';
+import UserFeed from './screens/UserFeed';
 
 const Stack = createStackNavigator();
 
-export const App: React.FC<IAppProps> = () => {
+export const App: React.FC<IAppProps> = ({navigation}: any) => {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="Home"
+        initialRouteName="Feed"
         screenOptions={{
-          headerRight: (props: any) => <Header {...props} />,
           headerStyle: styles.headerStyle,
           headerTintColor: styles.headerTintColor.color,
           headerTitleStyle: styles.headerTitleStyle,
         }}>
-        <Stack.Screen
-          name="Home"
-          component={HomeScreen}
-          options={{title: 'Strider'}}></Stack.Screen>
-        <Stack.Screen
-          name="Profile"
-          component={Profile}
-          initialParams={{
-            user: 'John Doe',
-            age: 21,
-            city: 'Montgomery',
-          }}
-          options={({route}: any) => ({
-            title: route.params?.user,
-          })}></Stack.Screen>
+        <Stack.Screen name="Feed" component={Feed} />
+        <Stack.Screen name="You" component={UserFeed} />
       </Stack.Navigator>
     </NavigationContainer>
   );
