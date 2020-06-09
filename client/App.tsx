@@ -14,6 +14,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import HomeScreen from './Home';
 import Profile from './Profile';
+import Header from './components/Header';
 import styles from './Styles';
 
 const Stack = createStackNavigator();
@@ -24,6 +25,7 @@ export const App: React.FC<IAppProps> = () => {
       <Stack.Navigator
         initialRouteName="Home"
         screenOptions={{
+          headerRight: (props: any) => <Header {...props} />,
           headerStyle: styles.headerStyle,
           headerTintColor: styles.headerTintColor.color,
           headerTitleStyle: styles.headerTitleStyle,

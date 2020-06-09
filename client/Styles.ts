@@ -14,11 +14,15 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   headerStyle: {
-    backgroundColor: '#ff7600',
+    backgroundColor: 'white',
   },
-  headerTintColor: {color: '#fff'},
+  headerTintColor: {color: 'black'},
   headerTitleStyle: {
     fontWeight: 'bold',
+    fontSize: 30,
+  },
+  button: {
+    backgroundColor: '#ff7600',
   },
 });
 
