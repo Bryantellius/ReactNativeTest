@@ -10,27 +10,25 @@
 
 import React from 'react';
 import 'react-native-gesture-handler';
-import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator, HeaderTitle} from '@react-navigation/stack';
-import styles from './Styles';
+import {NavigationContainer, useIsFocused} from '@react-navigation/native';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import Icon from 'react-native-vector-icons/Feather';
 import Feed from './screens/Feed';
-import UserFeed from './screens/UserFeed';
+import Profile from './screens/Profile';
 
-const Stack = createStackNavigator();
+const Tab = createBottomTabNavigator();
 
 export const App: React.FC<IAppProps> = ({navigation}: any) => {
   return (
     <NavigationContainer>
-      <Stack.Navigator
+      <Tab.Navigator
         initialRouteName="Feed"
         screenOptions={{
-          headerStyle: styles.headerStyle,
-          headerTintColor: styles.headerTintColor.color,
-          headerTitleStyle: styles.headerTitleStyle,
+          tabBarIcon: ({focused, color, size}) => <Icon name="home" size={30} />,
         }}>
-        <Stack.Screen name="Feed" component={Feed} />
-        <Stack.Screen name="You" component={UserFeed} />
-      </Stack.Navigator>
+        <Tab.Screen name="Feed" component={Feed} />
+        <Tab.Screen name="Profile" component={Profile} />
+      </Tab.Navigator>
     </NavigationContainer>
   );
 };

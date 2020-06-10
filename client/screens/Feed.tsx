@@ -6,6 +6,10 @@ export const Feed = ({navigation}: any) => {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Feed Page</Text>
+      <Button
+        onPress={() => navigation.navigate('Profile')}
+        title="Open Modal"
+      />
     </View>
   );
 };
